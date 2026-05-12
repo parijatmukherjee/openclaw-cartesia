@@ -1,0 +1,44 @@
+{
+  "name": "openclaw-cartesia",
+  "version": "0.1.0",
+  "description": "OpenClaw speech provider plugin for Cartesia Sonic-2 — high-quality TTS with voice cloning, drop-in for messages.tts and talk surfaces (Telegram voice notes, etc.).",
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "openclaw.plugin.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "openclaw": {
+    "extensions": ["./dist/index.js"]
+  },
+  "keywords": [
+    "openclaw",
+    "openclaw-plugin",
+    "tts",
+    "speech",
+    "cartesia",
+    "sonic",
+    "voice-clone"
+  ],
+  "author": "Parijat Mukherjee <parijat_mukherjee@live.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "homepage": "https://github.com/parijatmukherjee/openclaw-cartesia",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parijatmukherjee/openclaw-cartesia.git"
+  },
+  "bugs": {
+    "url": "https://github.com/parijatmukherjee/openclaw-cartesia/issues"
+  },
+  "scripts": {
+    "lint": "node --check dist/index.js"
+  }
+}

@@ -1,0 +1,56 @@
+// Example openclaw.json snippet enabling the cartesia speech provider.
+// Merge this into your existing openclaw.json (paths shown verbatim).
+//
+// Prereqs:
+//   - Install the plugin (one of):
+//       npm i openclaw-cartesia      (when published)
+//       openclaw plugins install npm:openclaw-cartesia
+//       openclaw plugins install ./path/to/openclaw-cartesia
+//   - ffmpeg on PATH (used for OGG/Opus transcoding of voice notes)
+//   - Set env vars CARTESIA_API_KEY and CARTESIA_DOBBY_VOICE_ID
+//     (or use any other SecretRef source you prefer)
+{
+  "plugins": {
+    "allow": ["cartesia"],
+    "entries": {
+      "cartesia": { "enabled": true }
+    }
+  },
+  "secrets": {
+    "providers": {
+      "default-env": {
+        "source": "env",
+        "allowlist": ["CARTESIA_API_KEY", "CARTESIA_DOBBY_VOICE_ID"]
+      }
+    }
+  },
+  "messages": {
+    "tts": {
+      "persona": "dobby",
+      "personas": {
+        "dobby": {
+          "prompt": "Speak in flowing prose. Avoid bullet lists, tables, and large code blocks.",
+          "providers": {
+            "cartesia": {
+              "voiceId": {
+                "source": "env",
+                "provider": "default-env",
+                "id": "CARTESIA_DOBBY_VOICE_ID"
+              },
+              "modelId": "sonic-2"
+            }
+          }
+        }
+      },
+      "providers": {
+        "cartesia": {
+          "apiKey": {
+            "source": "env",
+            "provider": "default-env",
+            "id": "CARTESIA_API_KEY"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+src/
+examples/
+.gitignore
+.npmignore
+*.log
+.DS_Store
+.env*
