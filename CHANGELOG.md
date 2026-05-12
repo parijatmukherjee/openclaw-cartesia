@@ -4,6 +4,11 @@ All notable changes to `openclaw-cartesia` will be documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/);
 this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-05-12
+
+### Added
+- ClawHub publish metadata: `openclaw.compat.pluginApi` (`>=2026.5.7`) and `openclaw.build.openclawVersion` (`2026.5.7`) in `package.json`. Required by `clawhub package publish` for code plugins.
+
 ## [0.2.0] - 2026-05-12
 
 ### Added
