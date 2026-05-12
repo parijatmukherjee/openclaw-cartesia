@@ -1,9 +1,9 @@
-# openclaw-cartesia
+# openclaw-cartesia — Cartesia Sonic-2 TTS for OpenClaw
 
 [![npm version](https://img.shields.io/npm/v/openclaw-cartesia.svg)](https://www.npmjs.com/package/openclaw-cartesia)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**[OpenClaw](https://openclaw.ai) speech provider for [Cartesia](https://cartesia.ai) Sonic-2** — high-quality text-to-speech with instant voice cloning, drop-in for OpenClaw's `messages.tts` pipeline, `talk-voice` CLI, and any channel that supports voice notes (Telegram, Slack, etc.).
+**[OpenClaw](https://openclaw.ai) speech provider for [Cartesia](https://cartesia.ai) Sonic-2** — high-quality text-to-speech with instant voice cloning, drop-in for OpenClaw's `messages.tts` pipeline, `talk-voice` CLI, and any channel that supports voice notes (Telegram, Slack, Discord, etc.).
 
 ## Why
 
@@ -20,7 +20,7 @@ This plugin closes that gap. It registers `cartesia` as a `speechProviders` cont
 
 > Requires Node 20+ and `ffmpeg` on PATH (used to transcode PCM → OGG/Opus for voice notes — Cartesia doesn't emit Opus natively).
 
-### From npm (recommended once published)
+### From npm (recommended)
 
 ```bash
 openclaw plugins install npm:openclaw-cartesia
@@ -135,7 +135,7 @@ MIT — see [LICENSE](LICENSE).
 
 ## Status
 
-✅ v0.2.0 — runs in production on OpenClaw 2026.5.7. Verified end-to-end on Telegram voice notes. Telephony PCM path implemented but unverified. Issues and PRs welcome — see [CHANGELOG.md](CHANGELOG.md) for release history.
+✅ v0.2.2 — runs in production on OpenClaw 2026.5.7. Verified end-to-end on Telegram voice notes. Telephony PCM path implemented but unverified. Issues and PRs welcome — see [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ### Known limitations
 
@@ -148,3 +148,7 @@ MIT — see [LICENSE](LICENSE).
 - [Cartesia](https://cartesia.ai)
 - [OpenClaw plugin development guide](https://github.com/openclaw/openclaw/blob/main/docs/tools/plugin.md)
 - [openclaw-orchestra](https://github.com/parijatmukherjee/openclaw-orchestra) — multi-agent orchestration pattern for OpenClaw
+
+## Keywords
+
+openclaw, cartesia, tts, text-to-speech, voice-cloning, speech-synthesis, sonic-2, plugin, npm, voice, telegram-bot, discord-bot, slack-bot, ai
