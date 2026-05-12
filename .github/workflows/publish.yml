@@ -1,4 +1,4 @@
-name: Publish to npm
+name: Publish
 
 on:
   push:
@@ -35,3 +35,15 @@ jobs:
       - run: npm run lint
 
       - run: npm publish --provenance --access public
+
+  publish-clawhub:
+    needs: publish
+    permissions:
+      contents: read
+      id-token: write
+    uses: openclaw/clawhub/.github/workflows/package-publish.yml@v0.15.0
+    with:
+      source: parijatmukherjee/openclaw-cartesia@${{ github.ref_name }}
+      dry_run: false
+    secrets:
+      clawhub_token: ${{ secrets.CLAWHUB_TOKEN }}
