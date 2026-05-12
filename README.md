@@ -84,6 +84,26 @@ Restart the gateway:
 openclaw gateway restart
 ```
 
+## When does the voice actually fire?
+
+This plugin only **registers** Cartesia as a speech provider. Whether a given assistant turn produces audio is decided by OpenClaw's top-level `messages.tts.auto` setting. Valid modes:
+
+| `messages.tts.auto` | Behavior |
+|---|---|
+| `"off"` | Never auto-speak — TTS only fires when manually invoked. |
+| `"always"` | Speak every assistant turn. Produces a **text + voice duplicate** for text inputs unless you pair with `cartesia.config.suppressDuplicateText: true`. |
+| `"inbound"` | Speak only when the user's inbound message was audio. **Recommended:** voice-on-voice, text-on-text. |
+| `"tagged"` | Speak only when the turn is explicitly tagged for TTS. |
+
+If you see Dobby reply with text **and** voice to every text message you send, you almost certainly want `"inbound"` (and a gateway restart):
+
+```bash
+openclaw config set messages.tts.auto inbound
+openclaw gateway restart
+```
+
+`suppressDuplicateText` is a *complement* to `auto`, not a replacement: `auto` decides whether to synthesize at all, and `suppressDuplicateText` cancels the redundant text-send when synthesis did happen.
+
 ## Provider config reference
 
 All keys live under `messages.tts.providers.cartesia` (or `personas.<id>.providers.cartesia` for per-persona overrides):
@@ -135,7 +155,7 @@ MIT — see [LICENSE](LICENSE).
 
 ## Status
 
-✅ v0.2.2 — runs in production on OpenClaw 2026.5.7. Verified end-to-end on Telegram voice notes. Telephony PCM path implemented but unverified. Issues and PRs welcome — see [CHANGELOG.md](CHANGELOG.md) for release history.
+✅ v0.2.3 — runs in production on OpenClaw 2026.5.7. Verified end-to-end on Telegram voice notes. Telephony PCM path implemented but unverified. Issues and PRs welcome — see [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ### Known limitations
 

@@ -13,7 +13,13 @@
   "plugins": {
     "allow": ["cartesia"],
     "entries": {
-      "cartesia": { "enabled": true }
+      "cartesia": {
+        "enabled": true,
+        // Cancel the channel's duplicate text reply when this plugin produces a
+        // voice note in the same turn. Pair with messages.tts.auto: "always"
+        // or "inbound" — harmless with "off"/"tagged".
+        "config": { "suppressDuplicateText": true }
+      }
     }
   },
   "secrets": {
@@ -26,6 +32,15 @@
   },
   "messages": {
     "tts": {
+      // `auto` controls when TTS auto-fires. Valid values:
+      //   "off"     — never auto-speak (manual only via the tts tool)
+      //   "always"  — speak every assistant turn (text+voice duplicate on text
+      //               inputs; pair with cartesia.suppressDuplicateText)
+      //   "inbound" — speak only when the user's inbound message was audio
+      //               (recommended: voice-on-voice, text-on-text)
+      //   "tagged"  — speak only when the turn is explicitly tagged for TTS
+      "enabled": true,
+      "auto": "inbound",
       "persona": "dobby",
       "personas": {
         "dobby": {
