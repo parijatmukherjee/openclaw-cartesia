@@ -1,6 +1,6 @@
 {
   "name": "openclaw-cartesia",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "OpenClaw speech provider plugin for Cartesia Sonic-2 — high-quality TTS with voice cloning, drop-in for messages.tts and talk surfaces (Telegram voice notes, etc.).",
   "type": "module",
   "main": "./dist/index.js",

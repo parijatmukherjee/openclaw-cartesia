@@ -4,6 +4,11 @@ All notable changes to `openclaw-cartesia` will be documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/);
 this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2026-05-12
+
+### Changed
+- CI: tag push now auto-publishes to **both** npm (via Trusted Publishing / OIDC) and ClawHub (via the openclaw/clawhub reusable workflow). No version-bump-only contents change.
+
 ## [0.2.1] - 2026-05-12
 
 ### Added
