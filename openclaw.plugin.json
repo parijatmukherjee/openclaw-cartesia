@@ -4,11 +4,17 @@
   "description": "OpenClaw speech provider for Cartesia Sonic-2. Supports instant voice cloning, voice notes (OGG/Opus via ffmpeg), and audio files (MP3). Free and pay-as-you-go tiers via api.cartesia.ai.",
   "activation": { "onStartup": false },
   "enabledByDefault": false,
-  "providerAuthEnvVars": {
-    "cartesia": ["CARTESIA_API_KEY"]
-  },
   "contracts": {
     "speechProviders": ["cartesia"]
+  },
+  "setup": {
+    "providers": [
+      {
+        "id": "cartesia",
+        "authMethods": ["api-key"],
+        "envVars": ["CARTESIA_API_KEY"]
+      }
+    ]
   },
   "configSchema": {
     "type": "object",

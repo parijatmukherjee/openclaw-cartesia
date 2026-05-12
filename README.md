@@ -135,7 +135,12 @@ MIT — see [LICENSE](LICENSE).
 
 ## Status
 
-🚧 v0.1.0 — works for `voice-note` (Telegram) and `audio-file` (MP3) targets. Telephony PCM path implemented but unverified. Filed under "works for me on OpenClaw 2026.5.7". Issues and PRs welcome.
+✅ v0.2.0 — runs in production on OpenClaw 2026.5.7. Verified end-to-end on Telegram voice notes. Telephony PCM path implemented but unverified. Issues and PRs welcome — see [CHANGELOG.md](CHANGELOG.md) for release history.
+
+### Known limitations
+
+- **`suppressDuplicateText` is a hook-based workaround**, not a first-class OpenClaw feature. It cancels the channel's text-send by sequence proximity to the voice synthesis. Works in 1:1 chats and the canonical agent-reply path; may not handle multi-message turns or out-of-order delivery cleanly.
+- **Telegram channel** delivers Cartesia audio as a voice note via `sendVoice` automatically when the synthesis is `voiceCompatible: true` (OGG/Opus). Other channels with voice-note support are not yet verified.
 
 ## Related
 
