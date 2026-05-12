@@ -42,7 +42,10 @@ function normalizeConfig(rawConfig) {
   };
 }
 
-export function buildCartesiaSpeechProvider() {
+export function buildCartesiaSpeechProvider(opts = {}) {
+  const onVoiceNoteSynthesized = typeof opts.onVoiceNoteSynthesized === "function"
+    ? opts.onVoiceNoteSynthesized
+    : null;
   const provider = {
     id: "cartesia",
     label: "Cartesia",
@@ -104,12 +107,12 @@ export function buildCartesiaSpeechProvider() {
         timeoutMs: req.timeoutMs ?? 30_000,
       });
 
-      return {
-        audioBuffer,
-        outputFormat,
-        fileExtension: outputFormat.startsWith("ogg") ? ".ogg" : ".mp3",
-        voiceCompatible: outputFormat.startsWith("ogg"),
-      };
+      const fileExtension = outputFormat.startsWith("ogg") ? ".ogg" : ".mp3";
+      const voiceCompatible = outputFormat.startsWith("ogg");
+      if (voiceCompatible && onVoiceNoteSynthesized) {
+        try { onVoiceNoteSynthesized(req?.cfg?.sessionKey ?? req?.sessionKey ?? null); } catch { /* hook callback safe */ }
+      }
+      return { audioBuffer, outputFormat, fileExtension, voiceCompatible };
     },
 
     async synthesizeTelephony(req) {
