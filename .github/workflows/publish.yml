@@ -41,7 +41,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    uses: openclaw/clawhub/.github/workflows/package-publish.yml@v0.17.0
+    uses: openclaw/clawhub/.github/workflows/package-publish.yml@v0.19.0
     with:
       source: parijatmukherjee/openclaw-cartesia@${{ github.ref_name }}
       dry_run: false
